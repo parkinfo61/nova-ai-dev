@@ -7,6 +7,12 @@ on:
     paths:
       - 'build/p24-marketplace-system-contract-bridge/**'
       - '.github/workflows/build-p24-market-alpha-3-5-2.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'build/p24-marketplace-system-contract-bridge/**'
+      - '.github/workflows/build-p24-market-alpha-3-5-2.yml'
   workflow_dispatch:
 
 permissions:
