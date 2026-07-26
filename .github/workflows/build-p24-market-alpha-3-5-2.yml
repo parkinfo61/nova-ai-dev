@@ -1,0 +1,58 @@
+name: Build P24 Marketplace alpha.3.5.2 bridge
+
+on:
+  push:
+    branches:
+      - build/p24-market-alpha-3-5-2
+    paths:
+      - 'build/p24-marketplace-system-contract-bridge/**'
+      - '.github/workflows/build-p24-market-alpha-3-5-2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate PHP syntax
+        run: |
+          set -euo pipefail
+          find build/p24-marketplace-system-contract-bridge -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate JSON
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for path in Path('build/p24-marketplace-system-contract-bridge').rglob('*.json'):
+              json.loads(path.read_text(encoding='utf-8'))
+              print('OK', path)
+          PY
+
+      - name: Build installable ZIP
+        run: |
+          set -euo pipefail
+          rm -rf dist stage
+          mkdir -p dist stage/p24-marketplace-system-contract-bridge
+          rsync -a --delete \
+            --exclude='.git*' \
+            --exclude='tests/' \
+            --exclude='dist/' \
+            build/p24-marketplace-system-contract-bridge/ \
+            stage/p24-marketplace-system-contract-bridge/
+          cd stage
+          zip -qr ../dist/p24-marketplace-os-1.0.0-alpha.3.5.2-system-contract-bridge.zip p24-marketplace-system-contract-bridge
+          cd ..
+          sha256sum dist/*.zip > dist/P24-MARKETPLACE-ALPHA-3.5.2-SHA256.txt
+
+      - name: Upload release package
+        uses: actions/upload-artifact@v4
+        with:
+          name: p24-marketplace-alpha-3.5.2-build
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30
