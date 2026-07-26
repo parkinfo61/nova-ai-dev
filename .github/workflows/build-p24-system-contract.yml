@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - p24-alpha-3-5-2-system-contract
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
