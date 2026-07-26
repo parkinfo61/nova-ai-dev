@@ -1,0 +1,30 @@
+{
+  "name": "P24 Marketplace OS — System Contract Bridge",
+  "version": "1.0.0-alpha.3.5.2",
+  "type": "wordpress-plugin",
+  "project": "Шахты24 Маркет",
+  "requires_core": ">=1.0.0-alpha.3.5.1",
+  "features": [
+    "system-map-rest",
+    "entity-registry",
+    "route-registry",
+    "role-contract",
+    "action-registry",
+    "automatic-test-objects",
+    "route-meta-markers",
+    "category-semantics",
+    "category-reclassification-guard",
+    "clean-public-description",
+    "developer-system-map-screen"
+  ],
+  "safe": {
+    "creates_database_tables": false,
+    "migrates_existing_data": false,
+    "changes_payments": false,
+    "changes_authentication": false,
+    "changes_messages": false,
+    "changes_roles": false,
+    "deletes_media": false
+  },
+  "rollback": "Deactivate and delete the bridge plugin. Existing listings and database tables remain unchanged."
+}
