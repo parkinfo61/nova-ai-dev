@@ -1,0 +1,65 @@
+name: Build P24 System Contract
+
+on:
+  push:
+    branches:
+      - p24-alpha-3-5-2-system-contract
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: none
+
+      - name: Validate PHP
+        run: find . -type f -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate JavaScript
+        run: node --check assets/category-semantics.js
+
+      - name: Validate JSON
+        run: php -r '$d=json_decode(file_get_contents("manifest.json"), true); if (!is_array($d)) { fwrite(STDERR, json_last_error_msg()); exit(1); } echo "manifest ok\n";'
+
+      - name: Contract checks
+        run: |
+          grep -q "Version:     1.0.0-alpha.3.5.2" p24-marketplace-system-contract.php
+          grep -q "register_rest_route('p24-market/v1', '/system-map'" p24-marketplace-system-contract.php
+          grep -q "p24msc_confirm_reclassify" p24-marketplace-system-contract.php
+          grep -q "condition_options" assets/category-semantics.js
+          grep -q "Требует ремонта" p24-marketplace-system-contract.php
+          grep -q "Есть дефекты" p24-marketplace-system-contract.php
+
+      - name: Build installable ZIP
+        run: |
+          rm -rf build
+          mkdir -p build/p24-marketplace-system-contract
+          cp p24-marketplace-system-contract.php readme.txt manifest.json build/p24-marketplace-system-contract/
+          cp -R assets docs build/p24-marketplace-system-contract/
+          cd build
+          zip -r ../p24-marketplace-os-1.0.0-alpha.3.5.2-system-contract-bridge.zip p24-marketplace-system-contract
+          cd ..
+          sha256sum p24-marketplace-os-1.0.0-alpha.3.5.2-system-contract-bridge.zip > P24-MARKETPLACE-ALPHA-3.5.2-SHA256.txt
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: p24-marketplace-os-1.0.0-alpha.3.5.2-system-contract
+          path: |
+            p24-marketplace-os-1.0.0-alpha.3.5.2-system-contract-bridge.zip
+            P24-MARKETPLACE-ALPHA-3.5.2-SHA256.txt
+          if-no-files-found: error
+          retention-days: 30

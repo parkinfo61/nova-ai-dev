@@ -1,0 +1,35 @@
+{
+  "name": "Шахты24 Маркет — System Contract & Category Semantics",
+  "version": "1.0.0-alpha.3.5.2",
+  "type": "wordpress-plugin-bridge",
+  "project": "P24 Marketplace OS / Шахты24 Маркет",
+  "base_version": "1.0.0-alpha.3.5.1",
+  "schema_version": "1.0",
+  "modules": [
+    "system-registry",
+    "entity-registry",
+    "route-registry",
+    "action-registry",
+    "role-registry",
+    "category-schema",
+    "safe-category-reclassification",
+    "machine-readable-system-map",
+    "automatic-test-object-selection",
+    "public-description-guard"
+  ],
+  "rest": [
+    "/wp-json/p24-market/v1/system-map",
+    "/wp-json/p24-market/v1/system-map/private",
+    "/wp-json/p24-market/v1/category-schema/{term_id}"
+  ],
+  "safe": {
+    "creates_tables": false,
+    "changes_existing_tables": false,
+    "deletes_legacy_data_automatically": false,
+    "changes_payments": false,
+    "changes_authentication": false,
+    "changes_messages": false,
+    "requires_explicit_reclassification_confirmation": true
+  },
+  "release_date": "2026-07-27"
+}
