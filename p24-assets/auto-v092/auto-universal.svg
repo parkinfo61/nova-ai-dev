@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<defs>
+  <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071B32"/><stop offset="1" stop-color="#164E82"/></linearGradient>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B8BFF"/><stop offset="1" stop-color="#175EA8"/></linearGradient>
+  <linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF4B3E"/><stop offset="1" stop-color="#D52B1E"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD74D"/><stop offset="1" stop-color="#F4B400"/></linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7FAFF"/><stop offset=".45" stop-color="#B8C4D2"/><stop offset="1" stop-color="#657487"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#071B32" flood-opacity=".22"/></filter>
+  <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="18"/></filter>
+</defs><ellipse cx="480" cy="610" rx="260" ry="44" fill="#102945" opacity=".14" filter="url(#soft)"/>
+<g transform="translate(170,225) scale(1.0)" filter="url(#shadow)">
+  <path d="M60 210 C85 145 145 95 235 78 L395 72 C455 77 506 111 540 174 L568 229 C578 251 568 279 544 292 L505 313 L88 313 C52 309 31 291 33 260 C36 239 44 223 60 210 Z" fill="url(#blue)"/>
+  <path d="M165 105 L244 89 L385 86 C421 90 451 109 475 145 L498 183 L123 183 Z" fill="#DCEBFA" opacity=".92"/>
+  <path d="M250 92 L244 179" stroke="#8AA6C4" stroke-width="8"/>
+  <path d="M386 88 L411 180" stroke="#8AA6C4" stroke-width="8"/>
+  <rect x="76" y="209" width="468" height="44" rx="22" fill="#0A213B" opacity=".26"/>
+  <rect x="85" y="202" width="70" height="26" rx="13" fill="#EAF5FF"/>
+  <rect x="455" y="202" width="70" height="26" rx="13" fill="#FFE7E4"/>
+  <circle cx="154" cy="299" r="55" fill="#111827"/>
+  <circle cx="154" cy="299" r="31" fill="url(#metal)"/>
+  <circle cx="462" cy="299" r="55" fill="#111827"/>
+  <circle cx="462" cy="299" r="31" fill="url(#metal)"/>
+</g>
+<circle cx="690" cy="445" r="105" fill="#111827" filter="url(#shadow)"/>
+<circle cx="690" cy="445" r="65.1" fill="url(#metal)"/>
+<circle cx="690" cy="445" r="27.3" fill="#0D2947"/>
+<g stroke="#314155" stroke-width="16" stroke-linecap="round">
+  <line x1="690" y1="388.3" x2="690" y2="432.4"/>
+  <line x1="739.35" y1="416.65" x2="700.5" y2="438.7"/>
+  <line x1="739.35" y1="473.35" x2="700.5" y2="451.3"/>
+  <line x1="690" y1="501.7" x2="690" y2="457.6"/>
+  <line x1="640.65" y1="473.35" x2="679.5" y2="451.3"/>
+  <line x1="640.65" y1="416.65" x2="679.5" y2="438.7"/>
+</g>
+<g transform="translate(705,330) rotate(-15) scale(0.56)" filter="url(#shadow)">
+  <path d="M-38 -220 C32 -220 78 -170 72 -105 L25 -58 L-17 -98 L10 -132 C-7 -151 -39 -155 -63 -138 C-92 -117 -98 -78 -80 -50 L35 65 L6 94 L-109 -21 C-154 -69 -151 -145 -101 -190 C-82 -207 -62 -217 -38 -220 Z" fill="url(#metal)"/>
+  <rect x="-7" y="66" width="70" height="250" rx="32" fill="url(#metal)" transform="rotate(-45 0 0)"/>
+</g>
+<g transform="translate(555,475)" filter="url(#shadow)">
+  <rect x="-170" y="-70" width="340" height="200" rx="38" fill="#151B24"/>
+  <rect x="-170" y="-18" width="340" height="52" fill="url(#gold)"/>
+  <rect x="-118" y="-138" width="236" height="84" rx="36" fill="none" stroke="#151B24" stroke-width="30"/>
+  <rect x="-108" y="-8" width="44" height="66" rx="8" fill="url(#metal)"/>
+  <rect x="64" y="-8" width="44" height="66" rx="8" fill="url(#metal)"/>
+</g></svg>
